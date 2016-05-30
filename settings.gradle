@@ -1,0 +1,5 @@
+rootProject.name = 'sprinkle-org'
+
+include 'sprinkle'
+include 'examples'
+

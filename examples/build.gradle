@@ -1,0 +1,11 @@
+apply plugin:'application'
+
+mainClassName = "org.sprinkle.examples.PipelineServer"
+
+dependencies {
+    compile 'org.eclipse.jetty:jetty-server:9.3.8.v20160314'
+    compile project(':sprinkle')
+}
+
+task runExamples
+runExamples.dependsOn('run')

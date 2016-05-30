@@ -1,0 +1,43 @@
+allprojects {
+
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+
+    group = 'org.sprinkle'
+    version = '1.0.0-SNAPSHOT'
+
+    buildDir = './target'
+
+    repositories {
+        repositories {
+            mavenCentral()
+        }
+    }
+
+    dependencies {
+        testCompile 'junit:junit:4.11'
+        compile 'org.eclipse.jetty:jetty-client:9.3.8.v20160314'
+        compile 'com.google.guava:guava:19.0'
+    }
+
+    test {
+        systemProperties System.getProperties()
+        println systemProperties
+        systemProperties['user.dir'] = workingDir
+    }
+}
+
+subprojects {
+
+    sourceCompatibility = 1.8
+    repositories {
+        mavenCentral()
+    }
+
+    task allDeps(type: org.gradle.api.tasks.diagnostics.DependencyReportTask) {}
+
+    jar {
+        manifest.attributes provider: 'gradle'
+    }
+}
